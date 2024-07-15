@@ -50,17 +50,30 @@ namespace COBS.NET
         /// Decodes the given COBS-encoded data.
         /// </summary>
         /// <param name="data">The COBS-encoded data to decode.</param>
-        /// <param name="removeZeroByte">If true, removes the trailing zero byte from the decoded data.</param>
+        /// <param name="withZeroByte">If true, removes the trailing zero byte from the decoded data.</param>
         /// <returns>The decoded byte array.</returns>
         /// <exception cref="ArgumentException">Thrown when the COBS encoded data is invalid.</exception>
-        public static byte[] Decode(byte[] data, bool removeZeroByte = false)
+        public static byte[] Decode(byte[] data, bool withZeroByte = false)
         {
             var result = new List<byte>();
             var blockStartIndex = 0;
             byte distance;
 
-            // Remove the trailing zero byte if removeZeroByte is true
-            if (removeZeroByte)
+            if (data == null || data.Length == 0)
+            {
+                throw new ArgumentException("Data to decode cannot be null or empty.", nameof(data));
+            }
+
+            // Check if the data is COBS encoded
+            if (withZeroByte)
+            {
+                if (data[data.Length - 1] != 0x00) {
+                    throw new ArgumentException("Invalid COBS encoded data.", nameof(data));
+                }
+            }
+
+            // Remove the trailing zero byte if it exists
+            if (data[data.Length - 1] == 0x00)
             {
                 var temp = new byte[data.Length - 1];
                 Array.Copy(data, temp, data.Length - 1);
@@ -106,11 +119,11 @@ namespace COBS.NET
         /// Decodes the given COBS-encoded data.
         /// </summary>
         /// <param name="data">The COBS-encoded data to decode, as a List of bytes.</param>
-        /// <param name="removeZeroByte">If true, removes the trailing zero byte from the decoded data.</param>
+        /// <param name="withZeroByte">If true, removes the trailing zero byte from the decoded data.</param>
         /// <returns>The decoded byte array.</returns>
-        public static byte[] Decode(List<byte> data, bool removeZeroByte = false)
+        public static byte[] Decode(List<byte> data, bool withZeroByte = false)
         {
-            return Decode(data.ToArray(), removeZeroByte);
+            return Decode(data.ToArray(), withZeroByte);
         }
     }
 }
