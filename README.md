@@ -1,5 +1,8 @@
 # COBS.NET
 
+![Build status](https://github.com/OctSquid/COBS.NET/actions/workflows/build.yml/badge.svg)
+[![NuGet package](https://img.shields.io/nuget/v/COBS.NET.svg)](https://nuget.org/packages/COBS.NET)
+
 `COBS.NET` is a simple .NET implementation of the **[Consistent Overhead Byte Stuffing (COBS)](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)** algorithm.
 
 ## Installation
