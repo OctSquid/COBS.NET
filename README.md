@@ -28,7 +28,7 @@ byte[] encodedData = COBS.Encode(data);
 ### Decoding
 
 ```csharp
-byte[] data = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05 };
+byte[] data = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x00 };
 byte[] decodedData = COBS.Decode(data);
 ```
 
