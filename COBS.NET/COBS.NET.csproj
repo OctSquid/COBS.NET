@@ -1,21 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net47;net48;netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Title>$(AssemblyName)</Title>
-    <PackageId>Octsquid.$(AssemblyName)</PackageId>
-    <Authors>OctSquid</Authors>
-    <Description>A simple .NET implementation of COBS</Description>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>cobs;dotnet</PackageTags>
-    <PackageReleaseNotes>First</PackageReleaseNotes>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net47;net48;netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+        <Title>$(AssemblyName)</Title>
+        <PackageId>Octsquid.$(AssemblyName)</PackageId>
+        <Authors>OctSquid</Authors>
+        <Description>A simple .NET implementation of COBS</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>cobs;dotnet</PackageTags>
+        <PackageReleaseNotes>First</PackageReleaseNotes>
+        <Copyright>Copyright (c) 2024 OctSquid</Copyright>
+        <PackageProjectUrl>https://github.com/OctSquid/COBS.NET</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/OctSquid/COBS.NET.git</RepositoryUrl>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\MedjcHub\ConsistentOverheadByteStuffing\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>
