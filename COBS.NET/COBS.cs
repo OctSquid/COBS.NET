@@ -25,12 +25,30 @@ namespace COBS.NET
             {
                 if (data[i] == 0)
                 {
+                    while (i - blockStartIndex >= 254)
+                    {
+                        result.Add(0xFF);
+                        var block = new byte[254];
+                        Array.Copy(data, blockStartIndex, block, 0, 254);
+                        result.AddRange(block);
+                        blockStartIndex += 254;
+                    }
+
                     result.Add((byte)(i - blockStartIndex + 1));
                     var block = new byte[i - blockStartIndex];
                     Array.Copy(data, blockStartIndex, block, 0, block.Length);
                     result.AddRange(block);
                     blockStartIndex = i + 1;
                 }
+            }
+
+            while (data.Length - blockStartIndex >= 254)
+            {
+                result.Add(0xFF);
+                var block = new byte[254];
+                Array.Copy(data, blockStartIndex, block, 0, 254);
+                result.AddRange(block);
+                blockStartIndex += 254;
             }
 
             result.Add((byte)(data.Length - blockStartIndex + 1));
