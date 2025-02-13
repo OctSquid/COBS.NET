@@ -35,9 +35,9 @@ namespace COBS.NET
                     }
 
                     result.Add((byte)(i - blockStartIndex + 1));
-                    var block = new byte[i - blockStartIndex];
-                    Array.Copy(data, blockStartIndex, block, 0, block.Length);
-                    result.AddRange(block);
+                    var subBlock = new byte[i - blockStartIndex];
+                    Array.Copy(data, blockStartIndex, subBlock, 0, subBlock.Length);
+                    result.AddRange(subBlock);
                     blockStartIndex = i + 1;
                 }
             }
